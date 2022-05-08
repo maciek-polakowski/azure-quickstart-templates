@@ -2,6 +2,9 @@
 export DEBIAN_FRONTEND=noninteractive
 apt-get update && sudo apt-get upgrade -y
 
+#fix install error
+apt update --fix-missing
+
 # Install pip
 apt-get -y install python3-pip
 
