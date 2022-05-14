@@ -165,9 +165,9 @@
   },
   "variables": {
     "nicName": "myVMNic",
-    "addressPrefix": "10.0.0.0/16",
+    "addressPrefix": "10.1.0.0/16",
     "subnetName": "Subnet-1",
-    "subnetPrefix": "10.0.0.0/24",
+    "subnetPrefix": "10.1.1.0/24",
     "storageAccountType": "Standard_LRS",
     "publicIPAddressName": "myPublicIP",
     "publicIPAddressType": "Dynamic",
