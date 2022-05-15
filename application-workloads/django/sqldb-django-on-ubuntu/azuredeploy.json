@@ -205,7 +205,7 @@
       "location": "[parameters('location')]",
       "properties": {
             "collation": "[parameters('collation')]",
-            "edition": "[parameters('edition')]",
+            "edition": "[parameters('edition')]"
        },
        "sku": {
         "name": "Standard",
