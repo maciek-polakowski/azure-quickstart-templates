@@ -304,7 +304,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(variables('vmName'),'_OSDisk2')]",
+            "name": "[concat(variables('vmName'),'_OSDisk3')]",
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
@@ -339,8 +339,8 @@
         "protectedSettings": {
           "commandToExecute": "[concat('sh install_django.sh ', parameters('vmDnsName'), ' ', parameters('serverName'), ' ', parameters('administratorLogin'), ' ', parameters('administratorLoginPassword'), ' ', parameters('databaseName'))]",
           "fileUris": [  "[uri(parameters('_artifactsLocation'), concat('install_django.sh', parameters('_artifactsLocationSasToken')))]" ],
-          "storageAccountName": "parameters('newStorageAccountName')",
-          "storageAccountKey": "listKeys(variables('newStorageAccountName'),'2019-06-01').keys[0].value"
+          "storageAccountName": "[parameters('newStorageAccountName')]",
+          "storageAccountKey": "[listKeys(variables('newStorageAccountName'),'2019-06-01').keys[0].value]"
         }
       }
     }
