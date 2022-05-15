@@ -206,7 +206,7 @@
           "type": "firewallrules"
         }
       ],
-    "type": "Microsoft.Sql/servers",
+    "type": "Microsoft.Sql/servers"
   },
     {
       "type": "Microsoft.Storage/storageAccounts",
