@@ -187,32 +187,35 @@
     }
   },
   "resources": [
-    {
-      "apiVersion": "2020-11-01-preview",
-      "location": "[parameters('location')]",
+    
+     {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-08-01-preview",
       "name": "[parameters('serverName')]",
+      "location": "[parameters('location')]",
       "properties": {
         "administratorLogin": "[parameters('administratorLogin')]",
-        "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
-        "version": "[parameters('version')]"
-      },
-      "resources": [
-        {
-          "apiVersion": "2020-11-01-preview",
-          "dependsOn": [
-            "[resourceId('Microsoft.Sql/servers/', parameters('serverName'))]"
-          ],
-          "location": "[parameters('location')]",
-          "name": "[parameters('databaseName')]",
-          "properties": {
+        "administratorLoginPassword": "[parameters('administratorLoginPassword')]"
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[format('{0}/{1}', parameters('serverName'), parameters('sqlDBName'))]",
+      "location": "[parameters('location')]",
+      "properties": {
             "collation": "[parameters('collation')]",
             "edition": "[parameters('edition')]",
-            "maxSizeBytes": "[parameters('maxSizeBytes')]",
-            "requestedServiceObjectiveId": "[parameters('requestedServiceObjectiveId')]"
-          },
-          "type": "databases"
-        },
-        {
+       },
+       "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+      ]
+    },
+    {
           "apiVersion": "2020-11-01-preview",
           "dependsOn": [
             "[resourceId('Microsoft.Sql/servers/', parameters('serverName'))]"
@@ -224,9 +227,6 @@
             "startIpAddress": "[parameters('firewallStartIP')]"
           },
           "type": "firewallrules"
-        }
-      ],
-      "type": "Microsoft.Sql/servers"
     },
     {
       "type": "Microsoft.Storage/storageAccounts",
