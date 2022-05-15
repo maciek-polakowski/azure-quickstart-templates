@@ -304,7 +304,7 @@
             "version": "latest"
           },
           "osDisk": {
-            "name": "[concat(variables('vmName'),'_OSDisk')]",
+            "name": "[concat(variables('vmName'),'_OSDisk2')]",
             "caching": "ReadWrite",
             "createOption": "FromImage"
           }
