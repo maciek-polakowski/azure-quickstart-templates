@@ -339,8 +339,8 @@
         "protectedSettings": {
           "commandToExecute": "[concat('sh install_django.sh ', parameters('vmDnsName'), ' ', parameters('serverName'), ' ', parameters('administratorLogin'), ' ', parameters('administratorLoginPassword'), ' ', parameters('databaseName'))]",
           "fileUris": [  "[uri(parameters('_artifactsLocation'), concat('install_django.sh', parameters('_artifactsLocationSasToken')))]" ],
-          "storageAccountName": "<storage-account-name>",
-          "storageAccountKey": "<storage-account-key>"
+          "storageAccountName": "parameters('newStorageAccountName')",
+          "storageAccountKey": "listKeys(variables('newStorageAccountName'),'2019-06-01').keys[0].value"
         }
       }
     }
